@@ -44,3 +44,6 @@ TagManager:
   - name: Foreground
     uniqueID: 3446810983
     locked: 0
+  - name: SpaceShip
+    uniqueID: 1159967595
+    locked: 0
