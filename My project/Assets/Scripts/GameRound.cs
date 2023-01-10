@@ -15,7 +15,9 @@ public class GameRound : MonoBehaviour
         var player1 = new Player() { Name = "Killian", Stack = GeneratePlayerDeck() };
         var player2 = new Player() { Name = "Gay", Stack = GeneratePlayerDeck() };
         Debug.Log(player1);
+        player1.Stack.ForEach(p => Debug.Log(p));
         Debug.Log(player2);
+        player2.Stack.ForEach(p => Debug.Log(p));
     }
     // Update is called once per frame
     void Update()
