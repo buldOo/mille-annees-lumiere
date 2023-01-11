@@ -8,12 +8,16 @@ public class GameRound : MonoBehaviour
 {
     private bool _isPlayer1Turn = true;
     int _deckCounter = 100;
+
+    public Player player1;
+    public Player player2;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        var player1 = new Player() { Name = "Killian", Stack = GeneratePlayerDeck() };
-        var player2 = new Player() { Name = "Gay", Stack = GeneratePlayerDeck() };
+        player1 = new Player() { Name = "Killian", Stack = GeneratePlayerDeck() };
+        player2 = new Player() { Name = "Gay", Stack = GeneratePlayerDeck() };
         Debug.Log(player1);
         player1.Stack.ForEach(p => Debug.Log(p));
         Debug.Log(player2);
