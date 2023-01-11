@@ -33,13 +33,13 @@ public class GameRound : MonoBehaviour
     {
         Card card = new();
         
-        string[] typeList = {"distance","distance","distance", "shield", "energy", "speed"};
+        string[] typeList = {"Distance","Distance", "Shield", "Speed", "Energy"};
         int[] distanceList = {25, 50, 75, 100};
         int[] speedList = {25, 50, 75};
         
-        int typeCount = Random.Range(0, typeList.Length - 1);
-        int distanceCount = Random.Range(0, distanceList.Length - 1);
-        int speedCount = Random.Range(0, speedList.Length - 1);
+        int typeCount = Random.Range(0, typeList.Length);
+        int distanceCount = Random.Range(0, distanceList.Length );
+        int speedCount = Random.Range(0, speedList.Length );
         bool isCounter  = (Random.value > 0.5f);
         
         card.Type = typeList[typeCount];
@@ -49,17 +49,17 @@ public class GameRound : MonoBehaviour
 
         switch (typeList[typeCount])
         {
-            case "distance":
-                card.Description = isCounter ? "Avance de la valeur précisée" : "Recule de la valeur précisée";
+            case "Distance":
+                card.Description = isCounter ? "Avancez de : " : "Faites reculer le joueur adverse de :";
                 break;
-            case "shield":
-                card.Description = isCounter ? "Réactive le bouclier" : "Détruit le bouclier adverse";
+            case "Shield":
+                card.Description = isCounter ? "Active votre bouclier" : "Detruit le bouclier du joueur adverse";
                 break;
-            case "energy":
+            case "Energy":
                 card.Description = isCounter ? "Recharge le vaisseau" : "Endommage l'alimentation du vaisseau adverse";
                 break;
-            case "speed":
-                card.Description = isCounter ? "Moteur à pleine puissance" : "Bride la vitesse adverse";
+            case "Speed":
+                card.Description = isCounter ? "Reprise des moteurs a pleine puissance" : "Bride la vitesse du joueur adverse a :";
                 break;
         }
 
@@ -73,7 +73,7 @@ public class GameRound : MonoBehaviour
         
         List<Card> stack = new();
         
-        for (int i = 0; i <= 6; i++)
+        for (int i = 0; i < 6; i++)
         {
             stack.Add(GenerateCard());
         }
