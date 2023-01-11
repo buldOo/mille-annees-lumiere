@@ -817,7 +817,7 @@ GameObject:
   - component: {fileID: 665835894}
   m_Layer: 3
   m_Name: Player2Hand
-  m_TagString: Untagged
+  m_TagString: playerTwo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 745239751}
   m_Layer: 3
   m_Name: Player1Hand
-  m_TagString: Canvas
+  m_TagString: playerOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
