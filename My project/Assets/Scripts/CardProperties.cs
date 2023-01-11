@@ -10,12 +10,16 @@ public class CardProperties : MonoBehaviour
 {
     public TMP_Text textDescr;
     
-    public GameObject GameManager;
     // Start is called before the first frame update
     void Start()
     {
         textDescr.text = "test card descr";
-        GameManager.GetComponent("GameRound");
+        var player1Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player1.Stack;
+        Debug.Log("foreach :");
+        player1Hand.ForEach(card =>
+        {
+            Debug.Log(card.Description);
+        });
     }
 
     // Update is called once per frame
