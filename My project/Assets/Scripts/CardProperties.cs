@@ -20,7 +20,7 @@ public class CardProperties : MonoBehaviour
     {
         var player1Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player1.Stack;
         var player2Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player2.Stack;
-        
+
         if (transform.tag == "playerOne")
         {
             var offset = -360;
@@ -28,13 +28,13 @@ public class CardProperties : MonoBehaviour
                 textDescr.text = card.Description;
                 textTitle.text = "Carte " + card.Type;
                 if(card.Type == "Distance") {
-                    textDistance.text = card.Distance.ToString() + " annees lumieres";
+                    textDistance.text = card.Distance.ToString();
                 } else {
                     textDistance.text = "";
                 };
                 if(card.Type == "Speed") {
                     if (!card.IsCounter){
-                    textSpeed.text = card.Speed.ToString() + " annees lumieres";
+                    textSpeed.text = card.Speed.ToString();
                     } else {
                         textSpeed.text = "";
                     }
@@ -51,13 +51,13 @@ public class CardProperties : MonoBehaviour
                 textDescr.text = card.Description;
                 textTitle.text = "Carte " + card.Type;
                 if(card.Type == "Distance") {
-                    textDistance.text = card.Distance.ToString() + " annees lumieres";
+                    textDistance.text = card.Distance.ToString();
                 } else {
                     textDistance.text = "";
                 };
                 if(card.Type == "Speed") {
                     if (!card.IsCounter){
-                    textSpeed.text = card.Speed.ToString() + " annees lumieres";
+                    textSpeed.text = card.Speed.ToString();
                     } else {
                         textSpeed.text = "";
                     }

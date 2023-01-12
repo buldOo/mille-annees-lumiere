@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CardType: {fileID: 2448102027167268317}
   CardDescr: {fileID: 2448102027719884989}
+  CardDistance: {fileID: 2448102027122548520}
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
 --- !u!1 &2448102026684061109
