@@ -15,6 +15,8 @@ public class CardClick : MonoBehaviour
     private GameObject player;
     private GameObject otherPlayer;
     public GameObject finishLine;
+
+    public GameObject StartLine;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,16 +48,22 @@ public class CardClick : MonoBehaviour
         {
             case "Carte Distance":
                 Debug.Log("carte distance");
-                var deplacement = float.Parse(CardDistance.text)/10;
+                var deplacementAvant = float.Parse(CardDistance.text)/10;
+                var deplacementArrière = float.Parse(CardDistance.text)/-10;
                 if (CardDescr.text == "Avancez de : ") {
-                    if (player.transform.position.x + deplacement <= finishLine.transform.position.x)
+                    if (player.transform.position.x + deplacementAvant <= finishLine.transform.position.x)
                     {
-                        player.transform.position = new Vector2(player.transform.position.x + deplacement, player.transform.position.y);
+                        player.transform.position = new Vector2(player.transform.position.x + deplacementAvant, player.transform.position.y);
                     } else {
-                        player.transform.position = new Vector2(player.transform.position.x, finishLine.transform.position.y);
+                        player.transform.position = new Vector2(finishLine.transform.position.x, player.transform.position.y);
                     }
                 } else {
-                    otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x + float.Parse(CardDistance.text)/-10, otherPlayer.transform.position.y);
+                    if (otherPlayer.transform.position.x + deplacementArrière >= StartLine.transform.position.x)
+                    {
+                        otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x + deplacementArrière, otherPlayer.transform.position.y);
+                    } else {
+                        otherPlayer.transform.position = new Vector2(StartLine.transform.position.x, otherPlayer.transform.position.y);
+                    }
                 }
                 break;
             case "Carte Speed":
