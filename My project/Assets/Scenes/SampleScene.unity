@@ -860,6 +860,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &575855919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575855920}
+  m_Layer: 0
+  m_Name: finishLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &575855920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575855919}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.86, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &586671594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,6 +1087,37 @@ MonoBehaviour:
   textSpeed: {fileID: 1735423920}
   gameObjectCard: {fileID: 2005373161}
   gameObjectHand: {fileID: 745239749}
+--- !u!1 &761331181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 761331182}
+  m_Layer: 0
+  m_Name: startLine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &761331182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 761331181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.17, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761365079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,7 +2952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1529323592}
   m_Layer: 0
-  m_Name: FinishLine (1)
+  m_Name: StartLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3509,6 +3571,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: StartLine
+      value: 
+      objectReference: {fileID: 761331181}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
       propertyPath: playerOne
       value: 
       objectReference: {fileID: 125758416}
@@ -3516,6 +3582,10 @@ PrefabInstance:
       propertyPath: playerTwo
       value: 
       objectReference: {fileID: 2103761320}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: finishLine
+      value: 
+      objectReference: {fileID: 575855919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
 --- !u!224 &1815411511 stripped
@@ -4421,6 +4491,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: StartLine
+      value: 
+      objectReference: {fileID: 761331181}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
       propertyPath: playerOne
       value: 
       objectReference: {fileID: 125758416}
@@ -4428,5 +4502,9 @@ PrefabInstance:
       propertyPath: playerTwo
       value: 
       objectReference: {fileID: 2103761320}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: finishLine
+      value: 
+      objectReference: {fileID: 575855919}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
