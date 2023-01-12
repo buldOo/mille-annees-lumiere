@@ -247,7 +247,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97181a4a6ade0474ab555a8ac478dcfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardType: {fileID: 2448102027167268317}
+  CardType: {fileID: 2448102027167268317}
+  CardDescr: {fileID: 2448102027719884989}
+  playerOne: {fileID: 0}
+  playerTwo: {fileID: 0}
 --- !u!1 &2448102026684061109
 GameObject:
   m_ObjectHideFlags: 0

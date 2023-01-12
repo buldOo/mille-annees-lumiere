@@ -207,6 +207,11 @@ Transform:
   m_Father: {fileID: 1171389563}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &125758416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6215395618169475170, guid: e092378170937ad449d2cd8208198b6e, type: 3}
+  m_PrefabInstance: {fileID: 1815543162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &197966576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,6 +3508,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: playerOne
+      value: 
+      objectReference: {fileID: 125758416}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: playerTwo
+      value: 
+      objectReference: {fileID: 2103761320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
 --- !u!224 &1815411511 stripped
@@ -4183,6 +4196,11 @@ Transform:
   m_Father: {fileID: 1171389563}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2103761320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7479420598193841262, guid: 5b7700cdb071f924ba4a3fa3dc1d8df8, type: 3}
+  m_PrefabInstance: {fileID: 334679541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2130448411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4398,5 +4416,13 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: playerOne
+      value: 
+      objectReference: {fileID: 125758416}
+    - target: {fileID: 4667775310960856338, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: playerTwo
+      value: 
+      objectReference: {fileID: 2103761320}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
