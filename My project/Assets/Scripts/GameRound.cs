@@ -19,7 +19,6 @@ public class GameRound : MonoBehaviour
     {
         player1 = new Player() { Name = "Killian", Stack = GeneratePlayerDeck() };
         player2 = new Player() { Name = "Gay", Stack = GeneratePlayerDeck() };
-        Debug.Log("Player one turn");
         player2Hand.SetActive(false);
     }
     
@@ -32,19 +31,21 @@ public class GameRound : MonoBehaviour
     {
         if (_isPlayer1Turn)
         {
-            Debug.Log("Player one turn end");
             _isPlayer1Turn = false;
             _isPlayer2Turn = true;
             player1Hand.SetActive(false);
             player2Hand.SetActive(true);
         } else if (_isPlayer2Turn)
         {
-            Debug.Log("Player two turn end");
             _isPlayer2Turn = false;
             _isPlayer1Turn = true;
             player1Hand.SetActive(true);
             player2Hand.SetActive(false);
         }
+    }
+
+    public void onClickCard() {
+        // 
     }
     
     //Générer une list de 100 cartes

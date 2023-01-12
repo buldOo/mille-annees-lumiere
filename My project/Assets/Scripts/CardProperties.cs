@@ -20,6 +20,7 @@ public class CardProperties : MonoBehaviour
     {
         var player1Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player1.Stack;
         var player2Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player2.Stack;
+        
         if (transform.tag == "playerOne")
         {
             var offset = -360;
