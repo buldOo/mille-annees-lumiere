@@ -6,26 +6,45 @@ using UnityEngine;
 
 public class GameRound : MonoBehaviour
 {
-    private bool _isPlayer1Turn = true;
+    public bool _isPlayer1Turn = true;
+    public bool _isPlayer2Turn = false;
     int _deckCounter = 100;
 
     public Player player1;
     public Player player2;
+    public GameObject player1Hand;
+    public GameObject player2Hand;
     
-    
-    // Start is called before the first frame update
     void Start()
     {
         player1 = new Player() { Name = "Killian", Stack = GeneratePlayerDeck() };
         player2 = new Player() { Name = "Gay", Stack = GeneratePlayerDeck() };
-        Debug.Log("Instanciate player");
-        //player1.Stack.ForEach(p => Debug.Log(p));
-        //player2.Stack.ForEach(p => Debug.Log(p));
+        Debug.Log("Player one turn");
+        player2Hand.SetActive(false);
     }
-    // Update is called once per frame
+    
     void Update()
     {
-        _isPlayer1Turn = false;
+        
+    }
+
+    public void SetTurn()
+    {
+        if (_isPlayer1Turn)
+        {
+            Debug.Log("Player one turn end");
+            _isPlayer1Turn = false;
+            _isPlayer2Turn = true;
+            player1Hand.SetActive(false);
+            player2Hand.SetActive(true);
+        } else if (_isPlayer2Turn)
+        {
+            Debug.Log("Player two turn end");
+            _isPlayer2Turn = false;
+            _isPlayer1Turn = true;
+            player1Hand.SetActive(true);
+            player2Hand.SetActive(false);
+        }
     }
     
     //Générer une list de 100 cartes
