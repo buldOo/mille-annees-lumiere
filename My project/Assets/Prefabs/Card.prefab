@@ -251,6 +251,8 @@ MonoBehaviour:
   CardType: {fileID: 2448102027167268317}
   CardDescr: {fileID: 2448102027719884989}
   CardDistance: {fileID: 2448102027122548520}
+  CardSpeed: {fileID: 2448102026298955029}
+  InGameConsole: {fileID: 0}
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
   finishLine: {fileID: 0}
@@ -261,7 +263,10 @@ MonoBehaviour:
   OtherPlayerEnergy: 1
   PlayerShield: 0
   OtherPlayerShield: 0
+  PlayerSpeedLimit: 100
+  OtherPlayerSpeedLimit: 100
   PlayerOneTurn: 1
+  gameRound: {fileID: 0}
 --- !u!1 &2448102026684061109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1050,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c54e9cf6cff4d448c02c06dfd3709e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  gameObjectCard: {fileID: 0}
 --- !u!114 &3872117545834686525
 MonoBehaviour:
   m_ObjectHideFlags: 0

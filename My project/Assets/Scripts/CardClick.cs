@@ -33,12 +33,16 @@ public class CardClick : MonoBehaviour
     
     public bool PlayerOneTurn = true;
 
+    public GameRound gameRound;
+
+    public List<Card> PlayerHand;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        var player1Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player1.Stack;
+        var player2Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player2.Stack;
     }
 
     // Update is called once per frame
@@ -53,6 +57,7 @@ public class CardClick : MonoBehaviour
         {
             player = playerOne;
             otherPlayer = playerTwo;
+            PlayerHand = player1Hand;
             PlayerOneTurn = true;
             PlayerEnergy = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy;
             OtherPlayerEnergy = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy;
@@ -60,13 +65,12 @@ public class CardClick : MonoBehaviour
             OtherPlayerShield = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield;
             PlayerSpeedLimit = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit;
             OtherPlayerSpeedLimit = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit;
-
-            Debug.Log("it's player one");
         }
         else if(transform.parent.tag == "playerTwo")
         {
             player = playerTwo;
             otherPlayer = playerOne;
+            PlayerHand = player2Hand;
             PlayerOneTurn = false;
             PlayerEnergy = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy;
             OtherPlayerEnergy = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy;
@@ -74,7 +78,6 @@ public class CardClick : MonoBehaviour
             OtherPlayerShield = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield;
             PlayerSpeedLimit = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit;
             OtherPlayerSpeedLimit = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit;
-            Debug.Log("it's player two");
         }
 
         switch (CardType.text)
@@ -87,8 +90,12 @@ public class CardClick : MonoBehaviour
                             if (player.transform.position.x + deplacementAvant <= finishLine.transform.position.x)
                             {
                                 player.transform.position = new Vector2(player.transform.position.x + deplacementAvant, player.transform.position.y);
+                                gameRound.SetTurn();
+                                PlayerHand.Add(gameRound.GenerateCard());
+                                Destroy(transform.gameObject);
                             } else {
                                 player.transform.position = new Vector2(finishLine.transform.position.x, player.transform.position.y);
+                                UnityEditor.EditorApplication.isPlaying = false;
                             }
                         } else {
                             InGameConsole.text = "Votre vaisseau est bridé et ne peux pas avancer de cette distance";
@@ -102,8 +109,14 @@ public class CardClick : MonoBehaviour
                         if (otherPlayer.transform.position.x + deplacementArrière >= StartLine.transform.position.x)
                         {
                             otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x + deplacementArrière, otherPlayer.transform.position.y);
+                            gameRound.SetTurn();
+                            PlayerHand.Add(gameRound.GenerateCard());
+                            Destroy(transform.gameObject);
                         } else {
-                            otherPlayer.transform.position = new Vector2(StartLine.transform.position.x, otherPlayer.transform.position.y);
+                            otherPlayer.transform.position = new Vector2(StartLine.transform.position.x - 1.5f, otherPlayer.transform.position.y);
+                            gameRound.SetTurn();
+                            PlayerHand.Add(gameRound.GenerateCard());
+                            Destroy(transform.gameObject);
                         }
                     }  else {
                         InGameConsole.text = "Le vaiseau adverse est endommagé, impossible de le faire reculer";
@@ -116,8 +129,12 @@ public class CardClick : MonoBehaviour
                         var speedLimit = float.Parse(CardSpeed.text)/10;
                         if (PlayerOneTurn){
                             GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit = speedLimit;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         } else {
                             GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit = speedLimit;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         }
                     } else {
                         InGameConsole.text = "Impossible de brider les deplacements du vaisseau ennemi car il a un bouclier d'actif";
@@ -125,8 +142,12 @@ public class CardClick : MonoBehaviour
                 } else {
                     if (PlayerOneTurn){
                         GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit = 100f;
+                        gameRound.SetTurn();
+                        Destroy(transform.gameObject);
                     } else {
                         GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit = 100f;
+                        gameRound.SetTurn();
+                        Destroy(transform.gameObject);
                     }
                 }
                 break;
@@ -135,8 +156,12 @@ public class CardClick : MonoBehaviour
                     if (OtherPlayerShield == true){
                         if (PlayerOneTurn){
                             GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield = false;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         } else {
                             GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield = false;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         }
                     } else {
                         InGameConsole.text = "Le joueur adverse n'a pas de bouclier actif";
@@ -144,8 +169,12 @@ public class CardClick : MonoBehaviour
                 } else {
                     if (PlayerOneTurn){
                         GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield = true;
+                        gameRound.SetTurn();
+                        Destroy(transform.gameObject);
                     } else {
                         GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield = true;
+                        gameRound.SetTurn();
+                        Destroy(transform.gameObject);
                     }
                 }
                 break;
@@ -154,8 +183,12 @@ public class CardClick : MonoBehaviour
                     if(OtherPlayerShield == false) {
                         if (PlayerOneTurn){
                             GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy = false;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         } else {
                             GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy = false;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         }
                     } else {
                         InGameConsole.text = "Impossible d'endommager le vaisseau ennemi car il a un bouclier d'actif";
@@ -163,11 +196,16 @@ public class CardClick : MonoBehaviour
                 } else {
                         if (PlayerOneTurn){
                             GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy = true;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         } else {
                             GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy = true;
+                            gameRound.SetTurn();
+                            Destroy(transform.gameObject);
                         }
                 }
                 break;
+            
         }
     }
 }

@@ -43,7 +43,7 @@ public class GameRound : MonoBehaviour
     {
         Card card = new();
         
-        string[] typeList = {"Distance","Distance", "Shield", "Speed", "Energy"};
+        string[] typeList = {"Distance","Distance", "Distance", "Distance", "Energy"};
         int[] distanceList = {25, 50, 75, 100};
         int[] speedList = {25, 50, 75};
         
@@ -90,4 +90,6 @@ public class GameRound : MonoBehaviour
 
         return stack;
     }
-}
+
+    
+}   
