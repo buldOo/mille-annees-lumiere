@@ -212,6 +212,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6215395618169475170, guid: e092378170937ad449d2cd8208198b6e, type: 3}
   m_PrefabInstance: {fileID: 1815543162}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &125758420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125758416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e164f1c5eaf4b3ab76af5c872c75bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerOneShield: 0
+  PlayerOneEnergy: 1
 --- !u!1 &197966576
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7479420598193841262, guid: 5b7700cdb071f924ba4a3fa3dc1d8df8, type: 3}
       propertyPath: m_Name
-      value: PixelArtSpaceShip3
+      value: PlayerTwo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7700cdb071f924ba4a3fa3dc1d8df8, type: 3}
@@ -3707,7 +3721,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6215395618169475170, guid: e092378170937ad449d2cd8208198b6e, type: 3}
       propertyPath: m_Name
-      value: PixelArtSpaceShipOne
+      value: PlayerOne
       objectReference: {fileID: 0}
     - target: {fileID: 6215395618169475170, guid: e092378170937ad449d2cd8208198b6e, type: 3}
       propertyPath: m_IsActive
@@ -4275,6 +4289,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7479420598193841262, guid: 5b7700cdb071f924ba4a3fa3dc1d8df8, type: 3}
   m_PrefabInstance: {fileID: 334679541}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2103761324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103761320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a898aee1b9b741a486741034eb8d4c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerTwoShield: 0
+  PlayerTwoEnergy: 1
 --- !u!1 &2130448411
 GameObject:
   m_ObjectHideFlags: 0
