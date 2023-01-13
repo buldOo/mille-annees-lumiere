@@ -56,8 +56,8 @@ public class CardProperties : MonoBehaviour
                     textDistance.text = "";
                 };
                 if(card.Type == "Speed") {
-                    if (!card.IsCounter){
-                    textSpeed.text = card.Speed.ToString();
+                    if(!card.IsCounter){
+                        textSpeed.text = card.Speed.ToString();
                     } else {
                         textSpeed.text = "";
                     }
@@ -69,11 +69,5 @@ public class CardProperties : MonoBehaviour
                 offset += 120;
             });
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

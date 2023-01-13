@@ -21,11 +21,6 @@ public class GameRound : MonoBehaviour
         player2 = new Player() { Name = "Gay", Stack = GeneratePlayerDeck() };
         player2Hand.SetActive(false);
     }
-    
-    void Update()
-    {
-        
-    }
 
     public void SetTurn()
     {
@@ -43,13 +38,8 @@ public class GameRound : MonoBehaviour
             player2Hand.SetActive(false);
         }
     }
-
-    public void onClickCard() {
-        // 
-    }
     
-    //Générer une list de 100 cartes
-    Card GenerateCard()
+    public Card GenerateCard()
     {
         Card card = new();
         
