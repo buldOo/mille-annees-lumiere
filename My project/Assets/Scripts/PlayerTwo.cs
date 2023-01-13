@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class PlayerTwo : MonoBehaviour
 {
-    public bool PlayerTwoShield = false;
+    public bool PlayerTwoShield = true;
     public bool PlayerTwoEnergy = true;
+    public float PlayerTwoSpeedLimit = 100f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

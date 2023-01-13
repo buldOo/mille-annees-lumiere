@@ -9,6 +9,8 @@ public class CardClick : MonoBehaviour
     public TMP_Text CardType;
     public TMP_Text CardDescr;
     public TMP_Text CardDistance;
+    public TMP_Text CardSpeed;
+    public TMP_Text InGameConsole;
 
     public GameObject playerOne;
     public GameObject playerTwo;
@@ -23,15 +25,20 @@ public class CardClick : MonoBehaviour
     public bool PlayerEnergy = true;
     public bool OtherPlayerEnergy = true;
 
-    // public bool PlayerOneShield = false;
-    // public bool PlayerTwoShield = false;
-    public bool PlayerShield = false;
-    public bool OtherPlayerShield = false;
+    public bool PlayerShield = true;
+    public bool OtherPlayerShield = true;
+
+    public float PlayerSpeedLimit = 100f;
+    public float OtherPlayerSpeedLimit = 100f;
+    
     public bool PlayerOneTurn = true;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -48,9 +55,12 @@ public class CardClick : MonoBehaviour
             otherPlayer = playerTwo;
             PlayerOneTurn = true;
             PlayerEnergy = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy;
-            OtherPlayerEnergy = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield;
+            OtherPlayerEnergy = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy;
             PlayerShield = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield;
             OtherPlayerShield = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield;
+            PlayerSpeedLimit = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit;
+            OtherPlayerSpeedLimit = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit;
+
             Debug.Log("it's player one");
         }
         else if(transform.parent.tag == "playerTwo")
@@ -58,32 +68,37 @@ public class CardClick : MonoBehaviour
             player = playerTwo;
             otherPlayer = playerOne;
             PlayerOneTurn = false;
-            PlayerEnergy = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield;
+            PlayerEnergy = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy;
             OtherPlayerEnergy = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy;
             PlayerShield = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield;
             OtherPlayerShield = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield;
+            PlayerSpeedLimit = GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit;
+            OtherPlayerSpeedLimit = GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit;
             Debug.Log("it's player two");
         }
 
         switch (CardType.text)
         {
             case "Carte Distance":
-                Debug.Log("carte distance");
-                var deplacementAvant = float.Parse(CardDistance.text)/10;
-                var deplacementArrière = float.Parse(CardDistance.text)/-10;
                 if (CardDescr.text == "Avancez de : ") {
                     if (PlayerEnergy) {
-                        if (player.transform.position.x + deplacementAvant <= finishLine.transform.position.x)
-                        {
-                            player.transform.position = new Vector2(player.transform.position.x + deplacementAvant, player.transform.position.y);
+                        var deplacementAvant = float.Parse(CardDistance.text)/10;
+                        if (deplacementAvant <= PlayerSpeedLimit){
+                            if (player.transform.position.x + deplacementAvant <= finishLine.transform.position.x)
+                            {
+                                player.transform.position = new Vector2(player.transform.position.x + deplacementAvant, player.transform.position.y);
+                            } else {
+                                player.transform.position = new Vector2(finishLine.transform.position.x, player.transform.position.y);
+                            }
                         } else {
-                            player.transform.position = new Vector2(finishLine.transform.position.x, player.transform.position.y);
+                            InGameConsole.text = "Votre vaisseau est bridé et ne peux pas avancer de cette distance";
                         }
                     } else {
-                        Debug.Log("Vaisseau endommagé impossible d'avancer");
+                        InGameConsole.text = "Votre vaisseau est endommagé, impossible d'avancer";
                     }
                 } else {
                     if (OtherPlayerEnergy) {
+                        var deplacementArrière = float.Parse(CardDistance.text)/-10;
                         if (otherPlayer.transform.position.x + deplacementArrière >= StartLine.transform.position.x)
                         {
                             otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x + deplacementArrière, otherPlayer.transform.position.y);
@@ -91,17 +106,32 @@ public class CardClick : MonoBehaviour
                             otherPlayer.transform.position = new Vector2(StartLine.transform.position.x, otherPlayer.transform.position.y);
                         }
                     }  else {
-                        Debug.Log("Vaisseau adverse endommagé impossible de le faire reculer");
+                        InGameConsole.text = "Le vaiseau adverse est endommagé, impossible de le faire reculer";
                     }
                 }
                 break;
             case "Carte Speed":
-                Debug.Log("carte speed");
+                if (CardDescr.text == "Bride la vitesse du joueur adverse a :"){
+                    if(OtherPlayerShield == false) {
+                        var speedLimit = float.Parse(CardSpeed.text)/10;
+                        if (PlayerOneTurn){
+                            GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit = speedLimit;
+                        } else {
+                            GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit = speedLimit;
+                        }
+                    } else {
+                        InGameConsole.text = "Impossible de brider les deplacements du vaisseau ennemi car il a un bouclier d'actif";
+                    }
+                } else {
+                    if (PlayerOneTurn){
+                        GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneSpeedLimit = 100f;
+                    } else {
+                        GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoSpeedLimit = 100f;
+                    }
+                }
                 break;
             case "Carte Shield":
-                Debug.Log("carte shield");
                 if (CardDescr.text == "Detruit le bouclier du joueur adverse"){
-                    Debug.Log("Carte Malus Shield");
                     if (OtherPlayerShield == true){
                         if (PlayerOneTurn){
                             GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoShield = false;
@@ -109,10 +139,9 @@ public class CardClick : MonoBehaviour
                             GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield = false;
                         }
                     } else {
-                        Debug.Log("Le joueur adverse n'a pas de bouclier actif");
+                        InGameConsole.text = "Le joueur adverse n'a pas de bouclier actif";
                     }
                 } else {
-                    Debug.Log("Carte Bonus Shield");
                     if (PlayerOneTurn){
                         GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneShield = true;
                     } else {
@@ -121,7 +150,6 @@ public class CardClick : MonoBehaviour
                 }
                 break;
             case "Carte Energy":
-                Debug.Log("carte energy");
                 if (CardDescr.text == "Endommage l'alimentation du vaisseau adverse"){
                     if(OtherPlayerShield == false) {
                         if (PlayerOneTurn){
@@ -130,7 +158,7 @@ public class CardClick : MonoBehaviour
                             GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy = false;
                         }
                     } else {
-                        Debug.Log("Impossible d'endommager le vaisseau ennemi car il a un bouclier d'actif");
+                        InGameConsole.text = "Impossible d'endommager le vaisseau ennemi car il a un bouclier d'actif";
                     }
                 } else {
                         if (PlayerOneTurn){
