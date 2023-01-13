@@ -226,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerOneShield: 0
   PlayerOneEnergy: 1
+  PlayerOneSpeedLimit: 100
 --- !u!1 &197966576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3600,6 +3601,18 @@ PrefabInstance:
       propertyPath: finishLine
       value: 
       objectReference: {fileID: 575855919}
+    - target: {fileID: 5270710563582052951, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 860441842}
+    - target: {fileID: 5270710563582052951, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: position
+      value: 
+      objectReference: {fileID: 1815411516}
+    - target: {fileID: 5270710563582052951, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: gameObjectCard
+      value: 
+      objectReference: {fileID: 2448102026568102476, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
 --- !u!224 &1815411511 stripped
@@ -4303,6 +4316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerTwoShield: 0
   PlayerTwoEnergy: 1
+  PlayerTwoSpeedLimit: 100
 --- !u!1 &2130448411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,5 +4548,17 @@ PrefabInstance:
       propertyPath: finishLine
       value: 
       objectReference: {fileID: 575855919}
+    - target: {fileID: 5270710563582052951, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: gm
+      value: 
+      objectReference: {fileID: 860441842}
+    - target: {fileID: 5270710563582052951, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: position
+      value: 
+      objectReference: {fileID: 2005373161}
+    - target: {fileID: 5270710563582052951, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
+      propertyPath: gameObjectCard
+      value: 
+      objectReference: {fileID: 2448102026568102476, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21d6d352127ab4e0e9cf7b22d30c2594, type: 3}
