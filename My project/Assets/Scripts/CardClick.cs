@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using TMPro;
 
@@ -37,12 +38,14 @@ public class CardClick : MonoBehaviour
 
     public List<Card> PlayerHand;
 
+    private List<Card> player1Hand;
+    private List<Card> player2Hand;
 
     // Start is called before the first frame update
     void Start()
     {
-        var player1Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player1.Stack;
-        var player2Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player2.Stack;
+        player1Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player1.Stack;
+        player2Hand = GameObject.Find("GameManager").GetComponent<GameRound>().player2.Stack;
     }
 
     // Update is called once per frame
@@ -194,15 +197,15 @@ public class CardClick : MonoBehaviour
                         InGameConsole.text = "Impossible d'endommager le vaisseau ennemi car il a un bouclier d'actif";
                     }
                 } else {
-                        if (PlayerOneTurn){
-                            GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy = true;
-                            gameRound.SetTurn();
-                            Destroy(transform.gameObject);
-                        } else {
-                            GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy = true;
-                            gameRound.SetTurn();
-                            Destroy(transform.gameObject);
-                        }
+                    if (PlayerOneTurn){
+                        GameObject.Find("PlayerOne").GetComponent<PlayerOne>().PlayerOneEnergy = true;
+                        gameRound.SetTurn();
+                        Destroy(transform.gameObject);
+                    } else {
+                        GameObject.Find("PlayerTwo").GetComponent<PlayerTwo>().PlayerTwoEnergy = true;
+                        gameRound.SetTurn();
+                        Destroy(transform.gameObject);
+                    }
                 }
                 break;
             
